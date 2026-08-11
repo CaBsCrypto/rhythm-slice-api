@@ -7,7 +7,9 @@
     "dev": "vercel dev",
     "deploy": "vercel --prod"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0"
+  },
   "devDependencies": {
     "vercel": "^39.0.0"
   }
