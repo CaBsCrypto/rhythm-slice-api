@@ -133,7 +133,7 @@ if (($uri === '/api/v1/leaderboard' || $uri === '/leaderboard') && $method === '
         return $s['game_slug'] === $gameSlug;
     });
 
-    usort($scores, function($a, b) {
+    usort($scores, function($a, $b) {
         return $b['score'] - $a['score'];
     });
 

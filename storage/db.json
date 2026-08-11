@@ -25,6 +25,61 @@
       "status": "active"
     }
   ],
-  "players": [],
-  "scores": []
+  "players": [
+    {
+      "id": 1,
+      "external_id": "player_mario_01",
+      "nickname": "Mario Chef",
+      "created_at": "2026-08-11T03:00:00Z"
+    },
+    {
+      "id": 2,
+      "external_id": "player_luigi_02",
+      "nickname": "Luigi Slice",
+      "created_at": "2026-08-11T03:05:00Z"
+    }
+  ],
+  "scores": [
+    {
+      "id": "score_demo_101",
+      "game_slug": "rhythm-slice",
+      "player_external_id": "player_mario_01",
+      "nickname": "Mario Chef",
+      "score": 15400,
+      "season_slug": "season-01",
+      "metadata": {
+        "combo": 52,
+        "accuracy": 98.6,
+        "difficulty": "hard"
+      },
+      "created_at": "2026-08-11T03:10:00Z"
+    },
+    {
+      "id": "score_demo_102",
+      "game_slug": "rhythm-slice",
+      "player_external_id": "player_luigi_02",
+      "nickname": "Luigi Slice",
+      "score": 12800,
+      "season_slug": "season-01",
+      "metadata": {
+        "combo": 40,
+        "accuracy": 95.2,
+        "difficulty": "medium"
+      },
+      "created_at": "2026-08-11T03:12:00Z"
+    },
+    {
+      "id": "score_demo_201",
+      "game_slug": "slice-hunter",
+      "player_external_id": "player_mario_01",
+      "nickname": "Mario Chef",
+      "score": 9200,
+      "season_slug": "season-01",
+      "metadata": {
+        "monsters_slain": 18,
+        "time_seconds": 145
+      },
+      "created_at": "2026-08-11T03:14:00Z"
+    }
+  ]
 }

@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Si el archivo/carpeta solicitado no existe físicamente, enruta a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
