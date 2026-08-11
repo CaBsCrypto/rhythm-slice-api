@@ -1,0 +1,30 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "slug": "rhythm-slice",
+      "name": "Rhythm Slice",
+      "api_key_hash": "$2y$10$e8w61P0Qf.xY3iN/Y9gDVOwR0yB6C9RzN9s8k.L4A5V6B7C8D9E0F",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "slug": "slice-hunter",
+      "name": "Slice Hunter",
+      "api_key_hash": "$2y$10$f9x72Q1R.yZ4jO/Z0hEWWP1s1zC7D0S0O0t9l.M5B6W7C8D9E0F1",
+      "status": "active"
+    }
+  ],
+  "seasons": [
+    {
+      "id": 1,
+      "slug": "season-01",
+      "name": "Season 01 - Inaugural",
+      "starts_at": "2026-08-01T00:00:00Z",
+      "ends_at": "2026-10-31T23:59:59Z",
+      "status": "active"
+    }
+  ],
+  "players": [],
+  "scores": []
+}
