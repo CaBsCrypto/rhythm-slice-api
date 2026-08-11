@@ -1,75 +1,66 @@
-# Rhythm Slice API — Documentación para Practicantes
+# SpicyCrust Game Ecosystem API
 
-API de puntajes y registro de jugadores del juego **Rhythm Slice (Guitar Pizza)**.
-
-Este repositorio contiene la documentación técnica y los endpoints serverless listos para que el equipo de practicantes pueda consumir, probar y extender la API.
+API ligera, segura y extensible construida en **PHP 8.2+** para el ecosistema de juegos de **SpicyCrust** (`spicycrust.com`).
 
 ---
 
-## 📄 Documentación
+## 🏛️ Visión y Arquitectura
 
-La especificación completa de la API con payloads, respuestas y ejemplos de cURL/Postman se encuentra en:
-
-👉 **[api_score.md](./api_score.md)**
-
----
-
-## 🚀 Endpoints Disponibles
-
-| Método | Endpoint | Descripción |
-| :--- | :--- | :--- |
-| `POST` | `/api/submit-score` | Registrar puntaje + nombre + email del jugador |
-| `GET` | `/api/leaderboard` | Consultar ranking de puntajes registrados |
+El núcleo común del ecosistema competitivo de SpicyCrust permite a juegos independientes (*Rhythm Slice*, *Slice Hunter*, etc.) compartir:
+- **Identidad de jugador** (`players`)
+- **Puntajes y metadatos** (`scores`)
+- **Rankings competitivos por juego y global** (`leaderboard`)
+- **Resets limpios por temporadas** (`seasons`)
 
 ---
 
-## 🛠️ Cómo Ejecutar Localmente
+## 📄 Documentación Técnica
+
+- 👉 **[ARCHITECTURE_PROPOSAL.md](./ARCHITECTURE_PROPOSAL.md):** Propuesta arquitectónica detallada y modelo de dominio.
+- 👉 **[docs/API.md](./docs/API.md):** Especificación completa de los contratos de la API v1 (endpoints, payloads JSON y códigos HTTP).
+- 👉 **[docs/SECURITY.md](./docs/SECURITY.md):** Especificación de seguridad, autenticación por API Key y protección antifraude.
+
+---
+
+## 🚀 Endpoints Principales
+
+| Método | Endpoint | Descripción | Autenticación |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/health` | Estado del motor PHP y salud de la API | Pública |
+| `GET` | `/api/v1/games` | Lista de juegos registrados | Pública |
+| `POST` | `/api/v1/scores` | Enviar puntaje de una partida | **API Key (`X-Game-Key`)** |
+| `GET` | `/api/v1/leaderboard` | Ranking por juego (`?game=rhythm-slice`) | Pública |
+| `GET` | `/api/v1/leaderboard/global` | Ranking global unificado | Pública |
+
+---
+
+## 💻 Ejecución en Desarrollo (PHP Nativo)
 
 ```bash
 # 1. Clonar el repositorio
 git clone https://github.com/CaBsCrypto/rhythm-slice-api.git
 cd rhythm-slice-api
 
-# 2. Instalar dependencias
-npm install
-
-# 3. Iniciar el servidor de desarrollo
-npx vercel dev
-```
-
-El servidor arrancará en `http://localhost:3000`.
-
----
-
-## 🧪 Prueba Rápida con cURL
-
-```bash
-# Enviar un puntaje
-curl -X POST http://localhost:3000/api/submit-score \
-  -H "Content-Type: application/json" \
-  -d '{"playerName":"Tester","playerEmail":"test@email.com","score":9999,"accuracy":99.1}'
-
-# Consultar el leaderboard
-curl http://localhost:3000/api/leaderboard
+# 2. Iniciar el servidor PHP integrado
+php -S localhost:8000 -t public
 ```
 
 ---
 
-## 📁 Estructura del Proyecto
+## 🗄️ Estructura del Proyecto (PHP Límpio)
 
 ```
-rhythm-slice-api/
-├── api/
-│   ├── submit-score.js    # Endpoint POST - registrar puntaje
-│   └── leaderboard.js     # Endpoint GET  - consultar rankings
-├── api_score.md           # Documentación técnica de la API
-├── package.json
-├── vercel.json
+spicycrust-game-api/
+├── public/
+│   └── index.php             # Entry point / Router HTTP PHP
+├── database/
+│   ├── schema.sql            # Esquema MySQL 8.0+ (Fase V2)
+│   └── seed.sql              # Datos semilla iniciales
+├── docs/
+│   ├── API.md                # Especificación de Contratos JSON
+│   └── SECURITY.md           # Políticas de Seguridad
+├── storage/
+│   └── db.json               # Persistencia atómica inicial JSON (V1)
+├── ARCHITECTURE_PROPOSAL.md   # Arquitectura oficial
 └── README.md
 ```
-
----
-
-## 📜 Licencia
-
-Proyecto interno de **Stellar Game Studio / AntiGravity**.
