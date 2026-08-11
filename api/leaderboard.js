@@ -1,8 +1,9 @@
 const { neon } = require('@neondatabase/serverless');
 
 const getDb = () => {
-  if (process.env.DATABASE_URL) {
-    return neon(process.env.DATABASE_URL);
+  const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING;
+  if (dbUrl) {
+    return neon(dbUrl);
   }
   return null;
 };
