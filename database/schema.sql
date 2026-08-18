@@ -86,9 +86,8 @@ CREATE TABLE IF NOT EXISTS seasons (
   -- Ejemplo: Temporada 1
   name VARCHAR(100) NOT NULL,
 
-  starts_at TIMESTAMP NOT NULL,
-
-  ends_at TIMESTAMP NOT NULL,
+  starts_at DATETIME NOT NULL,
+  ends_at DATETIME NOT NULL,
 
   status ENUM('active', 'completed') DEFAULT 'active',
 
